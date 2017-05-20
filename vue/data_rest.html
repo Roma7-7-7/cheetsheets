@@ -2,30 +2,29 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Index Page</title>
+    <title>Tables Page</title>
     <link rel="stylesheet" href="resources/css/master.css">
   </head>
   <body>
     <div id="app" class="app">
-      <app-header current="index"></app-header>
-      <!-- Simple data property -->
-      <div class="block">
-        <div class="title">
-          This is simple data element example
-        </div>
-        <div class="body">
-          {{ header }}
-        </div>
-      </div>
+      <app-header current="data_rest"></app-header>
 
       <!-- If and function example -->
       <div class="block">
         <div class="title">
-          If and function example
+          Rest example (wather)
         </div>
         <div class="body">
-          <span v-if="showHiddenText">Some hidden text</span><br>
-          <button type="button" id="toggleTextButton" v-on:click="toggleHiddenText">Toggle text</button>
+          <table border="1px">
+            <tr>
+              <th>Wather</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>{{weather.main}}</td>
+              <td>{{weather.description}}</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
@@ -33,5 +32,5 @@
   <script type="text/javascript" src="resources/js/vue.js"></script>
   <script type="text/javascript" src="resources/js/vue-resource.min.js"></script>
   <script type="text/javascript" src="components/header.js"></script>
-  <script type="text/javascript" src="pages/index.js"></script>
+  <script type="text/javascript" src="pages/data-rest.js"></script>
 </html>

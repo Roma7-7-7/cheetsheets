@@ -1,7 +1,6 @@
 var app = new Vue({
   el: '#app',
   data: {
-    header: 'This is header',
     rows: [
       {
         'column1': 'R1, C1',
@@ -12,18 +11,10 @@ var app = new Vue({
         'column2': 'R2, C2'
       }
     ],
-    showHiddenText: false,
     addColumn1: "",
-    addColumn2: "",
-    weather: {
-      main: "Undefined",
-      description: "Underfined"
-    }
+    addColumn2: ""
   },
   methods: {
-    toggleHiddenText: function() {
-      this.showHiddenText = !this.showHiddenText;
-    },
 
     addRow: function() {
       if (this.addColumn1.trim() == "" || this.addColumn2.trim() == "") {
@@ -38,13 +29,5 @@ var app = new Vue({
     removeRow: function(index) {
       this.rows.splice(index, 1);
     }
-  },
-  mounted: function() {
-    this.$http.get('http://demo4778058.mockable.io/weather.json').then(response => {
-      this.weather = response.body;
-    }, response => {
-        alert("Failed to load weather");
-        console.log(response);
-    })
   }
-})
+});

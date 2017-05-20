@@ -1,8 +1,36 @@
+body {
+  margin-top: 0px;
+}
+
 div.app {
   min-width: 800px;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+}
+
+div.header {
+  padding: 5px;
+  border-radius: 0px 0px 10px 10px;
+  -moz-border-radius: 0px 0px 10px 10px;
+  -webkit-border-radius: 0px 0px 10px 10px;
+  border-bottom: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+}
+
+div.header div.head {
+  padding: 15px;
+  display: inline-block;
+}
+
+div.header div.head.active {
+  border-bottom: 1px solid blue;
+}
+
+div.header div.head:hover {
+  background-color: #ececec;
+  cursor: pointer;
 }
 
 div.block {

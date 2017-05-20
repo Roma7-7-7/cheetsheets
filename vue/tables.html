@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tables Page</title>
+    <link rel="stylesheet" href="resources/css/master.css">
+  </head>
+  <body>
+    <div id="app" class="app">
+      <app-header current="tables"></app-header>
+      <!-- Add and remove row -->
+      <div class="block">
+        <div class="title">
+          Add and remove rows
+        </div>
+        <div class="body">
+          <table border="1px" v-on:keypress.13="addRow">
+            <tr>
+              <th>Column 1</th>
+              <th>Column 2</th>
+              <th>&nbsp;</th>
+            </tr>
+            <tr v-for="(row, index) in rows">
+              <td>{{row.column1}}</td>
+              <td>{{row.column2}}</td>
+              <td>
+                <a href="#" v-on:click="removeRow(index)">Delete</a>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="text" v-model="addColumn1"></td>
+              <td><input type="text" v-model="addColumn2"></td>
+              <td>
+                <button type="button" id="addRow" v-on:click="addRow">Add</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="resources/js/vue.js"></script>
+  <script type="text/javascript" src="resources/js/vue-resource.min.js"></script>
+  <script type="text/javascript" src="components/header.js"></script>
+  <script type="text/javascript" src="pages/tables.js"></script>
+</html>
