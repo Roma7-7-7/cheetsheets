@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="resources/css/master.css">
+  </head>
+  <body>
+    <div id="app" class="app">
+      <!-- Simple data property -->
+      <div class="block">
+        <div class="title">
+          This is simple data element example
+        </div>
+        <div class="body">
+          {{ header }}
+        </div>
+      </div>
+
+      <!-- If and function example -->
+      <div class="block">
+        <div class="title">
+          If and function example
+        </div>
+        <div class="body">
+          <span v-if="showHiddenText">Some hidden text</span><br>
+          <button type="button" id="toggleTextButton" v-on:click="toggleHiddenText">Toggle text</button>
+        </div>
+      </div>
+
+      <!-- Add and remove row -->
+      <div class="block">
+        <div class="title">
+          Add and remove rows
+        </div>
+        <div class="body">
+          <table border="1px" v-on:keypress.13="addRow">
+            <tr>
+              <th>Column 1</th>
+              <th>Column 2</th>
+              <th>&nbsp;</th>
+            </tr>
+            <tr v-for="(row, index) in rows">
+              <td>{{row.column1}}</td>
+              <td>{{row.column2}}</td>
+              <td>
+                <a href="#" v-on:click="removeRow(index)">Delete</a>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="text" v-model="addColumn1"></td>
+              <td><input type="text" v-model="addColumn2"></td>
+              <td>
+                <button type="button" id="addRow" v-on:click="addRow">Add</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- If and function example -->
+      <div class="block">
+        <div class="title">
+          Rest example (wather)
+        </div>
+        <div class="body">
+          <table border="1px">
+            <tr>
+              <th>Wather</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>{{weather.main}}</td>
+              <td>{{weather.description}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="resources/js/vue.js"></script>
+  <script type="text/javascript" src="resources/js/vue-resource.min.js"></script>
+  <script type="text/javascript" src="resources/js/index.js"></script>
+</html>
