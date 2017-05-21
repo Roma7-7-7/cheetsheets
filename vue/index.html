@@ -6,8 +6,23 @@
     <link rel="stylesheet" href="resources/css/master.css">
   </head>
   <body>
-    <div id="app" class="app">
-      <app-header current="index"></app-header>
+    <div id="app">
+      <div class="header">
+        <router-link to="/">Main</router-link>
+        <router-link to="/tables">Tables</router-link>
+        <router-link to="/data_rest">Data Rest</router-link>
+      </div>
+
+      <router-view></roter-view>
+    </div>
+  </body>
+  <script type="text/javascript" src="resources/js/vue.js"></script>
+  <script type="text/javascript" src="resources/js/vue-resource.min.js"></script>
+  <script type="text/javascript" src="resources/js/vue-router.js"></script>
+
+  <!-- Main View -->
+  <template id="mainView">
+    <div class="view">
       <!-- Simple data property -->
       <div class="block">
         <div class="title">
@@ -29,9 +44,68 @@
         </div>
       </div>
     </div>
-  </body>
-  <script type="text/javascript" src="resources/js/vue.js"></script>
-  <script type="text/javascript" src="resources/js/vue-resource.min.js"></script>
-  <script type="text/javascript" src="components/header.js"></script>
-  <script type="text/javascript" src="pages/index.js"></script>
+  </template>
+  <script type="text/javascript" src="app/main/main.js"></script>
+
+  <!-- Tables View -->
+  <template id="tablesView">
+    <div class="view">
+      <div class="block">
+        <div class="title">
+          Add and remove rows
+        </div>
+        <div class="body">
+          <table  class="sample-table" v-on:keypress.13="addRow">
+            <tr>
+              <th>Column 1</th>
+              <th>Column 2</th>
+              <th>&nbsp;</th>
+            </tr>
+            <tr v-for="(row, index) in rows">
+              <td>{{row.column1}}</td>
+              <td>{{row.column2}}</td>
+              <td>
+                <a v-on:click="removeRow(index)">Delete</a>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="text" v-model="addColumn1"></td>
+              <td><input type="text" v-model="addColumn2"></td>
+              <td>
+                <button type="button" id="addRow" v-on:click="addRow">Add</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </template>
+  <script type="text/javascript" src="app/tables/tables.js"></script>
+
+  <!-- Data Rest -->
+  <template id="dataRestView">
+    <div class="view">
+      <!-- If and function example -->
+      <div class="block">
+        <div class="title">
+          Rest example (wather)
+        </div>
+        <div class="body">
+          <table border="1px">
+            <tr>
+              <th>Wather</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>{{weather.main}}</td>
+              <td>{{weather.description}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </template>
+  <script type="text/javascript" src="app/data_rest/data-rest.js"></script>
+
+  <script type="text/javascript" src="app/index.js"></script>
 </html>

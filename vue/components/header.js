@@ -1,8 +1,6 @@
 Vue.component('app-header', {
   template: '<div class="header">' +
-    '<app-head url="index.html" headKey="index" v-bind:current="current">Main</app-head>' +
-    '<app-head url="tables.html" headKey="tables" v-bind:current="current">Tables</app-head>' +
-    '<app-head url="data_rest.html" headKey="data_rest" v-bind:current="current">Data Rest</app-head>' +
+    '<router-link to=\"/tables\">Tables</router-link>'
   '</div>',
   props: ['current'],
   components: {

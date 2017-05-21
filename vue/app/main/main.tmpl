@@ -1,0 +1,22 @@
+<div class="view">
+  <!-- Simple data property -->
+  <div class="block">
+    <div class="title">
+      This is simple data element example
+    </div>
+    <div class="body">
+      {{ header }}
+    </div>
+  </div>
+
+  <!-- If and function example -->
+  <div class="block">
+    <div class="title">
+      If and function example
+    </div>
+    <div class="body">
+      <span v-if="showHiddenText">Some hidden text</span><br>
+      <button type="button" id="toggleTextButton" v-on:click="toggleHiddenText">Toggle text</button>
+    </div>
+  </div>
+</div>

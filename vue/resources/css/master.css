@@ -2,7 +2,7 @@ body {
   margin-top: 0px;
 }
 
-div.app {
+div#app {
   min-width: 800px;
   max-width: 800px;
   margin-left: auto;
@@ -19,16 +19,18 @@ div.header {
   border-right: 1px solid #000000;
 }
 
-div.header div.head {
+div.header a {
   padding: 15px;
   display: inline-block;
+  text-decoration: none;
+  color: black;
 }
 
-div.header div.head.active {
+div.header a.active {
   border-bottom: 1px solid blue;
 }
 
-div.header div.head:hover {
+div.header a:hover {
   background-color: #ececec;
   cursor: pointer;
 }
@@ -49,4 +51,18 @@ div.block > .title {
 div.block > .body {
   margin-top: 10px;
   padding: 0px 5px;
+}
+
+table.sample-table {
+  border: 1px solid black;
+}
+
+table.sample-table td, table.sample-table th {
+  border: 1px solid black;
+}
+
+table.sample-table a {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
 }

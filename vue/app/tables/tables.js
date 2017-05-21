@@ -1,18 +1,20 @@
-var app = new Vue({
-  el: '#app',
-  data: {
-    rows: [
-      {
-        'column1': 'R1, C1',
-        'column2': 'R1, C2'
-      },
-      {
-        'column1': 'R2, C1',
-        'column2': 'R2, C2'
-      }
-    ],
-    addColumn1: "",
-    addColumn2: ""
+const TablesView = {
+  template: "#tablesView",
+  data: function() {
+    return {
+      rows: [
+        {
+          'column1': 'R1, C1',
+          'column2': 'R1, C2'
+        },
+        {
+          'column1': 'R2, C1',
+          'column2': 'R2, C2'
+        }
+      ],
+      addColumn1: "",
+      addColumn2: ""
+    }
   },
   methods: {
 
@@ -30,4 +32,4 @@ var app = new Vue({
       this.rows.splice(index, 1);
     }
   }
-});
+};

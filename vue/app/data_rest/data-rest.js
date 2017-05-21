@@ -1,9 +1,11 @@
-var app = new Vue({
-  el: "#app",
-  data: {
-    weather: {
-      main: "Undefined",
-      description: "Underfined"
+const DataRestView = {
+  template: "#dataRestView",
+  data: function() {
+    return {
+      weather: {
+        main: "Undefined",
+        description: "Underfined"
+      }
     }
   },
 
@@ -15,4 +17,4 @@ var app = new Vue({
         console.log(response);
     })
   }
-})
+};
