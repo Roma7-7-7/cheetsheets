@@ -8,9 +8,9 @@
   <body>
     <div id="app">
       <div class="header">
-        <router-link to="/">Main</router-link>
-        <router-link to="/tables">Tables</router-link>
-        <router-link to="/data_rest">Data Rest</router-link>
+        <router-link to="/" v-bind:class="{active: current=='main' }">Main</router-link>
+        <router-link to="/tables" v-bind:class="{active: current=='tables' }">Tables</router-link>
+        <router-link to="/data_rest" v-bind:class="{active: current=='data_rest' }">Data Rest</router-link>
       </div>
 
       <router-view></roter-view>
