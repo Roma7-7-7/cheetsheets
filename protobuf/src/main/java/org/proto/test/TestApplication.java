@@ -4,7 +4,6 @@ import org.proto.test.model.AppProtos;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
 import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +17,6 @@ import java.util.stream.Collectors;
 public class TestApplication {
 
     @Bean
-    @Primary
     public ProtobufHttpMessageConverter protobufHttpMessageConverter() {
         return new ProtobufHttpMessageConverter();
     }
@@ -38,13 +36,8 @@ class RouteController {
     }
 
     @GetMapping
-    public List<AppProtos.Route> getRoutes() {
-        return this.routes;
-    }
-
-    @GetMapping("/cargos")
-    public List<AppProtos.Cargo> getCargos() {
-        return this.routes.stream().map(AppProtos.Route::getCargosList).flatMap(List::stream).collect(Collectors.toList());
+    public AppProtos.Routes getRoutes() {
+        return AppProtos.Routes.newBuilder().addAllRoute(this.routes).build();
     }
 
     private void init() {
@@ -57,7 +50,7 @@ class RouteController {
                 "Route 2",
                 buildCargo(3, "Cargo 3", "Desc 3")));
         routes.add(buildRoute(buildCargo(4, "Cargo 4")));
-//        routes.add(AppProtos.Route.newBuilder().build());
+        routes.add(AppProtos.Route.newBuilder().build());
     }
 
     private AppProtos.Cargo buildCargo(int id, String name) {
@@ -76,13 +69,13 @@ class RouteController {
     }
 
     private AppProtos.Route buildRoute(AppProtos.Cargo ... cargos) {
-        return AppProtos.Route.newBuilder().addAllCargos(Arrays.asList(cargos)).build();
+        return AppProtos.Route.newBuilder().addAllCargo(Arrays.asList(cargos)).build();
     }
 
     private AppProtos.Route buildRoute(String description, AppProtos.Cargo ... cargos) {
         return AppProtos.Route.newBuilder()
                 .setDescription(description)
-                .addAllCargos(Arrays.asList(cargos)).build();
+                .addAllCargo(Arrays.asList(cargos)).build();
     }
 
 }
