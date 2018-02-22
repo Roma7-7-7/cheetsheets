@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+package model;
+
+option java_package = "org.proto.test.model";
+option java_outer_classname = "AppProtos";
+
+message Cargo {
+    required int32 id = 1;
+    required string name = 2;
+    optional string description = 3;
+}
+
+message Route {
+
+    repeated Cargo cargos = 1;
+    optional string description = 2;
+
+}
