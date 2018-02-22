@@ -1,0 +1,68 @@
+body {
+  margin-top: 0px;
+}
+
+div#app {
+  min-width: 800px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.header {
+  padding: 5px;
+  border-radius: 0px 0px 10px 10px;
+  -moz-border-radius: 0px 0px 10px 10px;
+  -webkit-border-radius: 0px 0px 10px 10px;
+  border-bottom: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+}
+
+div.header a {
+  padding: 15px;
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+}
+
+div.header a.active {
+  border-bottom: 1px solid blue;
+}
+
+div.header a:hover {
+  background-color: #ececec;
+  cursor: pointer;
+}
+
+div.block {
+  margin-top: 15px;
+  border-bottom: 2px solid grey;
+  padding: 10px;
+}
+
+div.block > .title {
+  padding: 5px;
+  border-bottom: 2px solid green;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+div.block > .body {
+  margin-top: 10px;
+  padding: 0px 5px;
+}
+
+table.sample-table {
+  border: 1px solid black;
+}
+
+table.sample-table td, table.sample-table th {
+  border: 1px solid black;
+}
+
+table.sample-table a {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
