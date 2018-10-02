@@ -7,3 +7,8 @@ server:
   adminConnectors:
   - type: http
     port: 8081
+database:
+  driverClass: org.postgresql.Driver
+  user: ${DB_USER}
+  password: ${DB_USER_PASSWORD}
+  url: ${DB_URL}

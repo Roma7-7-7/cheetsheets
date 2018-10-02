@@ -1,0 +1,57 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="v.1.0#1#add_role_table" author="roma">
+        <createTable tableName="role">
+            <column name="id" type="int" />
+            <column name="name" type="varchar(25)" />
+        </createTable>
+        <addPrimaryKey tableName="role" columnNames="id" />
+        <addNotNullConstraint tableName="role" columnName="name" />
+        <addUniqueConstraint tableName="role" columnNames="name" />
+        <insert tableName="role">
+            <column name="id">1</column>
+            <column name="name">admin</column>
+        </insert>
+        <insert tableName="role">
+            <column name="id">2</column>
+            <column name="name">user</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="v.1.0#2#add_user_table" author="roma">
+        <createTable tableName="user">
+            <column name="id" type="bigserial" />
+            <column name="email" type="varchar(100)" />
+            <column name="password" type="varchar(256)" />
+            <column name="name" type="varchar(50)" />
+            <column name="last_name" type="varchar(50)" />
+        </createTable>
+        <addPrimaryKey tableName="user" columnNames="id" />
+        <addNotNullConstraint tableName="user" columnName="email" />
+        <addNotNullConstraint tableName="user" columnName="password" />
+        <addNotNullConstraint tableName="user" columnName="name" />
+    </changeSet>
+
+    <changeSet id="v.1.0#3#add_user_role_table" author="roma">
+        <createTable tableName="user_role">
+            <column name="user_id" type="bigint" />
+            <column name="role_id" type="int" />
+        </createTable>
+        <addPrimaryKey tableName="user_role" columnNames="user_id, role_id" />
+        <addNotNullConstraint tableName="user_role" columnName="user_id" />
+        <addNotNullConstraint tableName="user_role" columnName="role_id" />
+        <addForeignKeyConstraint baseTableName="user_role" baseColumnNames="user_id"
+                                 constraintName="user_role_user_id_fk"
+                                 referencedTableName="user"
+                                 referencedColumnNames="id" />
+        <addForeignKeyConstraint baseTableName="user_role" baseColumnNames="role_id"
+                                 constraintName="user_role_role_id_fk"
+                                 referencedTableName="role"
+                                 referencedColumnNames="id" />
+    </changeSet>
+
+</databaseChangeLog>
