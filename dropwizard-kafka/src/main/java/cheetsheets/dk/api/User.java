@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.util.Set;
 
 public class User {
 
@@ -31,6 +32,8 @@ public class User {
 
     @Max(50)
     private String lastName;
+
+    private Set<String> roles;
 
     public Long getId() {
         return id;
@@ -78,5 +81,13 @@ public class User {
         this.lastName = lastName;
         return this;
     }
-    
+
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public User setRoles(Set<String> roles) {
+        this.roles = roles;
+        return this;
+    }
 }

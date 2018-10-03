@@ -6,7 +6,7 @@ server:
   adminContextPath: /admin
   adminConnectors:
   - type: http
-    port: 8081
+    port: 8881
 database:
   driverClass: org.postgresql.Driver
   user: ${DB_USER}

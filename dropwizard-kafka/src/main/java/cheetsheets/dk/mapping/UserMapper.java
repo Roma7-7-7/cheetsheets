@@ -1,13 +1,13 @@
 package cheetsheets.dk.mapping;
 
 import cheetsheets.dk.api.User;
+import cheetsheets.dk.core.Role;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Mapper
 public interface UserMapper {
@@ -19,31 +19,30 @@ public interface UserMapper {
             @Mapping(source = "email", target = "email"),
             @Mapping(source = "password", target = "password"),
             @Mapping(source = "name", target = "name"),
-            @Mapping(source = "lastName", target = "lastName")
+            @Mapping(source = "lastName", target = "lastName"),
+            @Mapping(source = "roles", target = "roles")
     })
-    User coreToApi(cheetsheets.dk.core.User user);
+    User coresToApis(cheetsheets.dk.core.User user);
 
     @Mappings({
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "email", target = "email"),
             @Mapping(source = "password", target = "password"),
             @Mapping(source = "name", target = "name"),
-            @Mapping(source = "lastName", target = "lastName")
+            @Mapping(source = "lastName", target = "lastName"),
+            @Mapping(source = "roles", target = "roles")
     })
-    cheetsheets.dk.core.User apiToCore(User user);
+    cheetsheets.dk.core.User apisToCores(User user);
 
-    default List<User> coreToApi(List<cheetsheets.dk.core.User> users) {
-        if (users == null) {
+    List<User> coresToApis(List<cheetsheets.dk.core.User> users);
+
+    Role stringToRoleName(String name);
+
+    default String roleToName(Role role) {
+        if (role == null) {
             return null;
         }
-        return users.stream().map(this::coreToApi).collect(Collectors.toList());
-    }
-
-    default List<cheetsheets.dk.core.User> apiToCore(List<User> users) {
-        if (users == null) {
-            return null;
-        }
-        return users.stream().map(this::apiToCore).collect(Collectors.toList());
+        return role.getName();
     }
 
 }
